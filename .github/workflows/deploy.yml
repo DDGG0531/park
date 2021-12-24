@@ -5,21 +5,22 @@ on:
     branches: [main]
 
 jobs:
-  start:
+  something:
+    name: checkout
     runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
 
-  steps:
-    - uses: actions/checkout@master
+      - name: AWS SSM Send-Command
+        uses: peterkimzz/aws-ssm-send-command@master
+        id: ssm
+        with:
+          aws-region: us-east-2b
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          instance-ids: ${{ secrets.INSTANCE_ID }}
 
-    - name: AWS SSM Send-Command
-      uses: peterkimzz/aws-ssm-send-command@master
-      id: ssm
-      with:
-        aws-region: us-east-2b
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        instance-ids: ${{ secrets.INSTANCE_ID }}
-
-        working-directory: /home/ubuntu/park
-        command: /bin/sh ./deploy.sh
-        comment: Deploy the main branch
+          working-directory: /home/ubuntu/park
+          command: /bin/sh ./deploy.sh
+          comment: Deploy the main branch
