@@ -1,0 +1,18 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// 緯度lat座標的整數須介於 -90 和 90 之間。
+// 經度lon座標的整數須介於 -180 和 180 之間。
+model Park {
+  id          Int     @id @default(autoincrement())
+  name        String?
+  description String?
+  lat         Float
+  lon         Float
+}
