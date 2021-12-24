@@ -23,3 +23,5 @@ jobs:
           working-directory: /home/ubuntu/park
           command: /bin/sh ./deploy.sh
           comment: Deploy the main branch
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
