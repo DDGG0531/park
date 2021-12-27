@@ -12,11 +12,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
 
-      - name: Make envfile
-        uses: SpicyPizza/create-envfile@v1.2
-        with:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
       - name: AWS SSM Send-Command
         uses: peterkimzz/aws-ssm-send-command@master
         with:
