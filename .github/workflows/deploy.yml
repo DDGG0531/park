@@ -16,8 +16,6 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.2
         with:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          directory: /home/ubuntu/park
-          file_name: .env
 
       - name: AWS SSM Send-Command
         uses: peterkimzz/aws-ssm-send-command@master
