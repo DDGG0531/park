@@ -26,5 +26,5 @@ jobs:
           instance-ids: ${{ secrets.INSTANCE_ID }}
 
           working-directory: /home/ubuntu/park
-          command: /bin/sh ./deploy.sh
+          command: echo ${{ secrets.DATABASE_URL }} >> .env | /bin/sh ./deploy.sh
           comment: Deploy the main branch
