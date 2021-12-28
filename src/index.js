@@ -41,8 +41,8 @@ app.use('/', parkRoutes);
 app.use('/', defaultRoutes);
 
 
-const server = app.listen(3000, () =>
+const server = app.listen(3333, () =>
   console.log(`
-🚀 Server ready at: http://localhost:3000
+🚀 Server ready at: http://localhost:3333
 ⭐️ See sample requests: http://pris.ly/e/ts/rest-express#3-using-the-rest-api`),
 )
